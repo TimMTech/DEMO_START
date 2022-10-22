@@ -1,6 +1,6 @@
 const Horizontal: React.FC = () => {
     return (
-        <div className="hover:scale-110 md:h-[350px] md:w-[350px] bg-red-500 h-[200px] w-[300px] flex flex-col cursor-pointer transition ease-in duration-300">
+        <div className="hover:scale-110 md:h-[350px] md:w-[350px] text-white text-xl bg-white/20 rounded-md h-[250px] w-[250px] flex flex-col cursor-pointer transition ease-in duration-300">
             <div className="flex items-center justify-center flex-1">
                 <h1>TEXT</h1>
             </div>

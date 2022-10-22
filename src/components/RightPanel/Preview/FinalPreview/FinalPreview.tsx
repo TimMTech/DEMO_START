@@ -3,3 +3,5 @@ const FinalPreview:React.FC = () => {
         
     </div>
 }
+
+export default FinalPreview;

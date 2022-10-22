@@ -3,8 +3,9 @@ import RightPanel from "../components/RightPanel/RightPanel"
 
 const DEMO_TEST:React.FC = () => {
     return (
-        <div className="w-screen h-screen">
+        <div className="w-screen h-screen flex">
            <LeftPanel />
+           <div className="border"/>
            <RightPanel />
         </div>
     )

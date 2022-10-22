@@ -3,19 +3,14 @@
 @tailwind utilities;
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/*EDITOR GLOBAL STYLING*/
+body {
+  background: rgb(93,84,240);
+  background: linear-gradient(120deg, rgba(93,84,240,1) 0%, rgba(152,152,255,1) 28%, rgba(30,141,168,1) 100%, rgba(0,212,255,1) 100%);
+}
 
-div.DraftEditor-root {
-    min-height: 400px;
-    border: 0.1rem solid black;
-    border-radius: 10px;
-    padding: 0.5rem;
-  }
-  
- 
-/***********************/
+
