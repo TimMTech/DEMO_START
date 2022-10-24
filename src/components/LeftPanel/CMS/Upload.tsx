@@ -6,8 +6,6 @@ const Upload: React.FC = () => {
                 <button className=" w-full text-2xl bg-purple-500/40 rounded-md cursor-pointer py-2">Upload Image</button>
             </div>
             <button className="w-full text-3xl bg-purple-500/40 rounded-md cursor-pointer">Translate</button>
-
-
         </div>
     )
 }
