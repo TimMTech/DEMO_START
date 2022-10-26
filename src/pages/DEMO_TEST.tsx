@@ -1,4 +1,4 @@
-import { ChangeEvent, MouseEvent, useState, useEffect, SetStateAction } from "react"
+import { ChangeEvent, MouseEvent, useState, useEffect } from "react"
 import LeftPanel from "../components/LeftPanel/LeftPanel"
 import RightPanel from "../components/RightPanel/RightPanel"
 
@@ -33,12 +33,11 @@ const DEMO_TEST: React.FC = () => {
         if (id === "vertical") setSelectedTemplate({ ...selectedTemplate, vertical: true, horizontal: false })
         if (id === "horizontal") setSelectedTemplate({ ...selectedTemplate, horizontal: true, vertical: false })
     }
-    console.log(checkedLanguages)
+
     const handleUploadImage = (e: ChangeEvent<HTMLInputElement>) => {
         const { files } = e.currentTarget
         if (!files) return
         setSelectedImage(files[0])
-
     }
 
     const handleUploadVideo = (e: ChangeEvent<HTMLInputElement>) => {
@@ -46,6 +45,7 @@ const DEMO_TEST: React.FC = () => {
         if (!files) return
         setSelectedVideo(files[0])
     }
+
     const handleCheckBox = (e: ChangeEvent<HTMLInputElement>) => {
         const { value } = e.currentTarget;
         setCheckedLanguages((prevState) => checkedLanguages.includes(value) ? prevState.filter((languages) => languages !== value) : [...prevState, value])
