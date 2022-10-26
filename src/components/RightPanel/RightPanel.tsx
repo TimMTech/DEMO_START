@@ -10,20 +10,22 @@ import { MouseEvent, ChangeEvent } from "react"
 
 interface RightPanelProps {
     editorContent: any;
-   
+    checkedLanguages:any;
     selectedTemplate: any;
     selectedImage: any;
     selectedVideo: any;
     steps: number;
+    translatedEditorContent: any;
     handleSelectedTemplate: (e: MouseEvent<HTMLDivElement>) => void;
     handleUploadImage: (e: ChangeEvent<HTMLInputElement>) => void
     handleUploadVideo: (e: ChangeEvent<HTMLInputElement>) => void
     handleNextStep: () => void;
     handlePreviousStep: () => void;
+    handleTranslate: (languages: string) => void;
    
 }
 
-const RightPanel: React.FC<RightPanelProps> = ({ steps, editorContent, selectedTemplate, selectedImage, selectedVideo, handleSelectedTemplate, handleUploadImage, handleUploadVideo, handleNextStep, handlePreviousStep }) => {
+const RightPanel: React.FC<RightPanelProps> = ({ steps, editorContent, selectedTemplate, selectedImage, selectedVideo, checkedLanguages, translatedEditorContent,  handleSelectedTemplate, handleUploadImage, handleUploadVideo, handleNextStep, handlePreviousStep,handleTranslate }) => {
 
     return (
         <div className="relative w-full flex flex-col justify-center flex-1 px-8 ">
@@ -47,8 +49,8 @@ const RightPanel: React.FC<RightPanelProps> = ({ steps, editorContent, selectedT
                 )}
                 {steps === 3 && (
                     <div className="w-full flex flex-col gap-2">
-                        <Language  />
-                        <Content editorContent={editorContent}/>
+                        <Language  checkedLanguages={checkedLanguages} handleTranslate={handleTranslate}/>
+                        <Content editorContent={editorContent} translatedEditorContent={translatedEditorContent}/>
                     </div>
                 )}
                 {steps === 4 && (
