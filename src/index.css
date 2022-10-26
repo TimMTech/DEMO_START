@@ -6,11 +6,13 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  
 }
 
 body {
   background: rgb(93, 84, 240);
   background: linear-gradient(120deg, rgba(93, 84, 240, 1) 0%, rgba(152, 152, 255, 1) 28%, rgba(30, 141, 168, 1) 100%, rgba(0, 212, 255, 1) 100%);
+  overflow-x: hidden;
 }
 
 
@@ -20,10 +22,31 @@ ol li {
 }
 
 ul li {
-  list-style:inside;
+  list-style: inside;
   margin-left: 1em;
 }
 
 blockquote {
   text-indent: 4em;
+}
+
+
+@layer utilities {
+  .no-select {
+
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                      supported by Chrome, Edge, Opera and Firefox */
+
+  }
 }

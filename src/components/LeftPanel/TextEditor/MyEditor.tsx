@@ -20,13 +20,13 @@ const MyEditor: React.FC<EditorProps> = ({ editorContent, handleEditorChange }) 
                 skin: "outside",
                 width: "100%",
                 menubar: false,
-                plugins: "autoresize link lists emoticons image preview",
+                plugins: "autoresize link lists emoticons preview",
                 paste_as_text: true,
                 min_height: 400,
                 max_height: 400,
                 toolbar_location: "top",
                 toolbar:
-                    "bold italic strikethrough link numlist bullist blockquote emoticons image preview outdent indent",
+                    "bold italic strikethrough link numlist bullist blockquote emoticons preview outdent indent",
                 
                 
             }} />
