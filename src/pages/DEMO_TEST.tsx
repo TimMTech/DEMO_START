@@ -3,7 +3,6 @@ import LeftPanel from "../components/LeftPanel/LeftPanel"
 import RightPanel from "../components/RightPanel/RightPanel"
 
 
-
 const DEMO_TEST: React.FC = () => {
 
     const [languageList, setLanguageList] = useState<[]>([])
@@ -52,7 +51,7 @@ const DEMO_TEST: React.FC = () => {
     }
 
     const handleTranslate = async (languages: string) => {
-        await fetch("https://translation.googleapis.com/language/translate/v2?key=AIzaSyDSrht6RsgqBFguMut26uiwpO_wavksDrs", {
+        await fetch(`https://translation.googleapis.com/language/translate/v2?key=${process.env.REACT_APP_GOOGLE_CLOUD_TRANSLATE_KEY}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -85,7 +84,7 @@ const DEMO_TEST: React.FC = () => {
     }
 
     useEffect(() => {
-        fetch("https://translation.googleapis.com/language/translate/v2/languages?key=AIzaSyDSrht6RsgqBFguMut26uiwpO_wavksDrs", {
+        fetch(`https://translation.googleapis.com/language/translate/v2/languages?key=${process.env.REACT_APP_GOOGLE_CLOUD_TRANSLATE_KEY}`, {
             method: "GET"
         })
             .then((response) => {
