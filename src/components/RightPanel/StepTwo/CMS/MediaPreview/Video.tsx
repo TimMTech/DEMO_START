@@ -4,9 +4,9 @@ interface VideoProps {
 
 const Video: React.FC<VideoProps> = ({ selectedVideo }) => {
     return (
-        <div className="w-[600px]">
+        <div className="w-full flex-2  ">
             {selectedVideo && (
-                <video autoPlay loop controls muted>
+                <video className="rounded-t-md" autoPlay loop controls muted>
                     <source src={URL.createObjectURL(selectedVideo)} type="video/mp4" />
                 </video>
             )}

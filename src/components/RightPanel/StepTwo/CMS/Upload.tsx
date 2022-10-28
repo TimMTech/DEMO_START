@@ -11,27 +11,23 @@ interface UploadProps {
 
 const Upload: React.FC<UploadProps> = ({ selectedImage, selectedVideo, handleUploadImage, handleUploadVideo }) => {
     return (
-        <div className="text-white font-bold text-3xl w-full flex flex-col items-center gap-4">
+        <div className="w-full text-white max-w-[800px] font-bold text-3xl flex flex-col gap-8">
             <h2 >Image</h2>
-            <div className="w-[800px] h-[500px] border-2 rounded-md flex flex-col items-center justify-center gap-2 ">
-
-
+            <div className="flex flex-col items-center ">
                 {selectedImage && (
                     <Image selectedImage={selectedImage} />
                 )}
-
-                <label htmlFor="image" className="text-center text-2xl bg-purple-500/40 rounded-md cursor-pointer p-2 border">Upload Image</label>
+                <label htmlFor="image" className="w-full flex-1 text-center text-2xl bg-purple-500/40  cursor-pointer p-2 ">{selectedImage ? "Change" : "Upload Image"}</label>
                 <input type="file" id="image" onChange={handleUploadImage} hidden />
             </div>
+
+
             <h2>Video</h2>
-            <div className="w-[800px] h-[500px] border-2 rounded-md flex flex-col items-center justify-center gap-2">
-
-
+            <div className="flex flex-col items-center ">
                 {selectedVideo && (
-
                     <Video selectedVideo={selectedVideo} />
                 )}
-                <label htmlFor="video" className="text-center text-2xl bg-purple-500/40 rounded-md cursor-pointer p-2 border">Upload Video</label>
+                <label htmlFor="video" className="w-full flex-1 text-center text-2xl bg-purple-500/40 cursor-pointer p-2 ">{selectedVideo ? "Change" : "Upload Video"}</label>
                 <input type="file" accept="video/mp4,video/x-m4v,video/*" id="video" onChange={handleUploadVideo} hidden />
             </div>
 

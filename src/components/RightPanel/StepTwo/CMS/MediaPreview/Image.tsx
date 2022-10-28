@@ -4,8 +4,8 @@ interface ImageProps {
 
 const Image:React.FC<ImageProps> = ({selectedImage}) => {
     return (
-        <div className="w-[600px]">
-            {selectedImage && <img src={URL.createObjectURL(selectedImage)} alt="article_image"></img>}
+        <div className="w-full flex-2 ">
+            {selectedImage && <img className="rounded-t-md" src={URL.createObjectURL(selectedImage)} alt="article_image"></img>}
         </div>
     )
 }

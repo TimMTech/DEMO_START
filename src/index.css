@@ -12,7 +12,7 @@
 body {
   background: rgb(93, 84, 240);
   background: linear-gradient(120deg, rgba(93, 84, 240, 1) 0%, rgba(152, 152, 255, 1) 28%, rgba(30, 141, 168, 1) 100%, rgba(0, 212, 255, 1) 100%);
-  overflow-x: hidden;
+  min-height: 100vh;
 }
 
 
@@ -30,6 +30,12 @@ blockquote {
   text-indent: 4em;
 }
 
+img {
+  display: block;
+  height: 100%;
+  max-width: 100%;
+  margin: auto;
+}
 
 @layer utilities {
   .no-select {

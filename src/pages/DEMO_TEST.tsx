@@ -8,7 +8,7 @@ const DEMO_TEST: React.FC = () => {
     const [languageList, setLanguageList] = useState<[]>([])
 
     const [checkedLanguages, setCheckedLanguages] = useState<any[]>([])
-
+    
     const [steps, setSteps] = useState<number>(1)
 
     const [editorContent, setEditorContent] = useState<string>("")
@@ -66,6 +66,7 @@ const DEMO_TEST: React.FC = () => {
                 return response.json()
             })
             .then((data) => {
+
                 const { data: { translations } } = data
                 setTranslatedEditorContent(translations[0].translatedText)
 
@@ -83,9 +84,13 @@ const DEMO_TEST: React.FC = () => {
         setSteps((prevState) => prevState - 1)
     }
 
+
+
     useEffect(() => {
-        fetch(`https://translation.googleapis.com/language/translate/v2/languages?key=${process.env.REACT_APP_GOOGLE_CLOUD_TRANSLATE_KEY}`, {
-            method: "GET"
+
+         fetch(`https://translation.googleapis.com/language/translate/v2/languages?key=${process.env.REACT_APP_GOOGLE_CLOUD_TRANSLATE_KEY}`, {
+            method: "GET",
+
         })
             .then((response) => {
                 if (!response.ok) console.log("ERROR")
@@ -94,6 +99,7 @@ const DEMO_TEST: React.FC = () => {
             .then((data) => {
                 const { data: { languages } } = data
                 setLanguageList(languages)
+
             })
             .catch((error) => {
                 console.log(error)
@@ -101,16 +107,18 @@ const DEMO_TEST: React.FC = () => {
     }, [])
 
     return (
-        <div className="w-screen h-screen flex ">
+        <div className="lg:flex-row lg:h-screen lg:gap-0 flex flex-col gap-14">
             <LeftPanel
+            steps={steps}
                 editorContent={editorContent}
                 languageList={languageList}
                 checkedLanguages={checkedLanguages}
+                
                 handleEditorChange={handleEditorChange}
                 handleCheckBox={handleCheckBox}
             />
 
-            <div className="border" />
+            <div className="lg:border lg:h-full lg:mx-0 border border-white/40 mx-8"/>
             <RightPanel
                 steps={steps}
                 selectedTemplate={selectedTemplate}
@@ -119,6 +127,7 @@ const DEMO_TEST: React.FC = () => {
                 selectedVideo={selectedVideo}
                 checkedLanguages={checkedLanguages}
                 translatedEditorContent={translatedEditorContent}
+
                 handleSelectedTemplate={handleSelectedTemplate}
                 handleUploadImage={handleUploadImage}
                 handleUploadVideo={handleUploadVideo}

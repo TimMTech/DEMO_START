@@ -10,7 +10,7 @@ import { MouseEvent, ChangeEvent } from "react"
 
 interface RightPanelProps {
     editorContent: any;
-    checkedLanguages:any;
+    checkedLanguages: any;
     selectedTemplate: any;
     selectedImage: any;
     selectedVideo: any;
@@ -22,41 +22,39 @@ interface RightPanelProps {
     handleNextStep: () => void;
     handlePreviousStep: () => void;
     handleTranslate: (languages: string) => void;
-   
+
 }
 
-const RightPanel: React.FC<RightPanelProps> = ({ steps, editorContent, selectedTemplate, selectedImage, selectedVideo, checkedLanguages, translatedEditorContent,  handleSelectedTemplate, handleUploadImage, handleUploadVideo, handleNextStep, handlePreviousStep,handleTranslate }) => {
+const RightPanel: React.FC<RightPanelProps> = ({ steps, editorContent, selectedTemplate, selectedImage, selectedVideo, checkedLanguages, translatedEditorContent, handleSelectedTemplate, handleUploadImage, handleUploadVideo, handleNextStep, handlePreviousStep, handleTranslate }) => {
 
     return (
-        <div className="relative w-full flex flex-col justify-center flex-1 px-8 ">
-            <div className="absolute top-0 left-0 right-0 flex justify-between items-center text-white text-2xl p-4">
+        <div className="relative w-full flex items-center justify-center p-8 h-full ">
+            <div className="lg:top-0 absolute top-[-5%] left-0 right-0 flex justify-between items-center text-white text-2xl p-3">
                 <button onClick={handlePreviousStep} disabled={steps === 1} className={`${steps === 1 && "opacity-20"}`}>Back</button>
                 <button onClick={handleNextStep} disabled={steps === 4} className={`${steps === 4 && "opacity-20"}`}>Next</button>
             </div>
-            <div className="flex flex-col items-center gap-6 py-8 ">
+            {steps === 1 && (
+                <div className="w-full flex flex-col gap-8">
+                    <h1 className="text-white font-bold text-center text-4xl font-bold w-full">Choose A Template</h1>
+                    <div className="w-full h-full flex flex-col items-center justify-center gap-10">
+                        <Horizontal handleSelectedTemplate={handleSelectedTemplate} selectedTemplate={selectedTemplate} />
+                        <Vertical handleSelectedTemplate={handleSelectedTemplate} selectedTemplate={selectedTemplate} />
+                    </div>
+                </div>
+            )}
+            {steps === 2 && (
+                <Upload selectedImage={selectedImage} selectedVideo={selectedVideo} handleUploadImage={handleUploadImage} handleUploadVideo={handleUploadVideo} />
+            )}
+            {steps === 3 && (
+                <div className="w-full flex flex-col gap-8">
+                    <Language checkedLanguages={checkedLanguages} handleTranslate={handleTranslate} />
+                    <Content editorContent={editorContent} translatedEditorContent={translatedEditorContent} />
+                </div>
+            )}
+            {steps === 4 && (
+                <FinalPreview editorContent={editorContent} translatedEditorContent={translatedEditorContent} selectedTemplate={selectedTemplate} selectedImage={selectedImage} selectedVideo={selectedVideo} />
+            )}
 
-                {steps === 1 && (
-                    <div className="w-full">
-                        <h1 className="text-white font-bold text-center text-4xl font-bold w-full p-2">Choose A Template</h1>
-                        <div className="w-full h-full flex items-center justify-center gap-10">
-                            <Horizontal handleSelectedTemplate={handleSelectedTemplate} selectedTemplate={selectedTemplate} />
-                            <Vertical handleSelectedTemplate={handleSelectedTemplate} selectedTemplate={selectedTemplate} />
-                        </div>
-                    </div>
-                )}
-                {steps === 2 && (
-                    <Upload selectedImage={selectedImage} selectedVideo={selectedVideo} handleUploadImage={handleUploadImage} handleUploadVideo={handleUploadVideo} />
-                )}
-                {steps === 3 && (
-                    <div className="w-full flex flex-col gap-2">
-                        <Language  checkedLanguages={checkedLanguages} handleTranslate={handleTranslate}/>
-                        <Content editorContent={editorContent} translatedEditorContent={translatedEditorContent}/>
-                    </div>
-                )}
-                {steps === 4 && (
-                    <FinalPreview editorContent={editorContent} selectedTemplate={selectedTemplate} selectedImage={selectedImage} selectedVideo={selectedVideo} />
-                )}
-            </div>
         </div>
     )
 }
