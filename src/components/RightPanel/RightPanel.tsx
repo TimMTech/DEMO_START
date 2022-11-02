@@ -16,16 +16,15 @@ interface RightPanelProps {
     selectedVideo: any;
     steps: number;
     translatedEditorContent: any;
+    
     handleSelectedTemplate: (e: MouseEvent<HTMLDivElement>) => void;
-    handleUploadImage: (e: ChangeEvent<HTMLInputElement>) => void
-    handleUploadVideo: (e: ChangeEvent<HTMLInputElement>) => void
     handleNextStep: () => void;
     handlePreviousStep: () => void;
     handleTranslate: (languages: string) => void;
 
 }
 
-const RightPanel: React.FC<RightPanelProps> = ({ steps, editorContent, selectedTemplate, selectedImage, selectedVideo, checkedLanguages, translatedEditorContent, handleSelectedTemplate, handleUploadImage, handleUploadVideo, handleNextStep, handlePreviousStep, handleTranslate }) => {
+const RightPanel: React.FC<RightPanelProps> = ({ steps, editorContent, selectedTemplate, selectedImage, selectedVideo, checkedLanguages, translatedEditorContent, handleSelectedTemplate,  handleNextStep, handlePreviousStep, handleTranslate }) => {
 
     return (
         <div className="relative w-full flex items-center justify-center p-8 h-full ">
@@ -43,7 +42,7 @@ const RightPanel: React.FC<RightPanelProps> = ({ steps, editorContent, selectedT
                 </div>
             )}
             {steps === 2 && (
-                <Upload selectedImage={selectedImage} selectedVideo={selectedVideo} handleUploadImage={handleUploadImage} handleUploadVideo={handleUploadVideo} />
+                <Upload selectedImage={selectedImage} selectedVideo={selectedVideo}  />
             )}
             {steps === 3 && (
                 <div className="w-full flex flex-col gap-8">

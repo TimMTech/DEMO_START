@@ -43,7 +43,10 @@
   "devDependencies": {
     "@tinymce/tinymce-react": "^4.2.0",
     "autoprefixer": "^10.4.12",
+    "express": "^4.18.2",
     "html-react-parser": "^3.0.4",
+    "imagekit": "^4.1.1",
+    "imagekitio-react": "^2.0.0",
     "postcss": "^8.4.18",
     "react-icons": "^4.6.0",
     "react-router-dom": "^6.4.2",

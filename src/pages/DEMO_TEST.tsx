@@ -8,8 +8,8 @@ const DEMO_TEST: React.FC = () => {
     const [languageList, setLanguageList] = useState<[]>([])
 
     const [checkedLanguages, setCheckedLanguages] = useState<any[]>([])
-    
-    const [steps, setSteps] = useState<number>(1)
+
+    const [steps, setSteps] = useState<number>(2)
 
     const [editorContent, setEditorContent] = useState<string>("")
 
@@ -33,16 +33,23 @@ const DEMO_TEST: React.FC = () => {
         if (id === "horizontal") setSelectedTemplate({ ...selectedTemplate, horizontal: true, vertical: false })
     }
 
-    const handleUploadImage = (e: ChangeEvent<HTMLInputElement>) => {
-        const { files } = e.currentTarget
-        if (!files) return
-        setSelectedImage(files[0])
+
+    const handleImageOnSuccess = (response: any) => {
+        console.log("success", response)
     }
 
-    const handleUploadVideo = (e: ChangeEvent<HTMLInputElement>) => {
-        const { files } = e.currentTarget
-        if (!files) return
-        setSelectedVideo(files[0])
+    const handleImageOnError = (response: any) => {
+        console.log("error", response)
+    }
+
+
+
+    const onSuccess = (response: any) => {
+        console.log("success", response)
+    }
+
+    const onError = (response: any) => {
+        console.log("Error", response)
     }
 
     const handleCheckBox = (e: ChangeEvent<HTMLInputElement>) => {
@@ -69,7 +76,6 @@ const DEMO_TEST: React.FC = () => {
 
                 const { data: { translations } } = data
                 setTranslatedEditorContent(translations[0].translatedText)
-
             })
             .catch((error) => {
                 console.log(error)
@@ -87,8 +93,7 @@ const DEMO_TEST: React.FC = () => {
 
 
     useEffect(() => {
-
-         fetch(`https://translation.googleapis.com/language/translate/v2/languages?key=${process.env.REACT_APP_GOOGLE_CLOUD_TRANSLATE_KEY}`, {
+        fetch(`https://translation.googleapis.com/language/translate/v2/languages?key=${process.env.REACT_APP_GOOGLE_CLOUD_TRANSLATE_KEY}`, {
             method: "GET",
 
         })
@@ -109,16 +114,16 @@ const DEMO_TEST: React.FC = () => {
     return (
         <div className="lg:flex-row lg:h-screen lg:gap-0 flex flex-col gap-14">
             <LeftPanel
-            steps={steps}
+                steps={steps}
                 editorContent={editorContent}
                 languageList={languageList}
                 checkedLanguages={checkedLanguages}
-                
+
                 handleEditorChange={handleEditorChange}
                 handleCheckBox={handleCheckBox}
             />
 
-            <div className="lg:border lg:h-full lg:mx-0 border border-white/40 mx-8"/>
+            <div className="lg:border lg:h-full lg:mx-0 border border-white/40 mx-8" />
             <RightPanel
                 steps={steps}
                 selectedTemplate={selectedTemplate}
@@ -129,8 +134,6 @@ const DEMO_TEST: React.FC = () => {
                 translatedEditorContent={translatedEditorContent}
 
                 handleSelectedTemplate={handleSelectedTemplate}
-                handleUploadImage={handleUploadImage}
-                handleUploadVideo={handleUploadVideo}
                 handleNextStep={handleNextStep}
                 handlePreviousStep={handlePreviousStep}
                 handleTranslate={handleTranslate}
