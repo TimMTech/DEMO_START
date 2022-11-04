@@ -1,15 +1,18 @@
-import { ChangeEvent, MouseEvent, useState, useEffect } from "react"
+import { ChangeEvent, MouseEvent, useState } from "react"
 import LeftPanel from "../components/LeftPanel/LeftPanel"
 import RightPanel from "../components/RightPanel/RightPanel"
+import { languages } from "../utils/languages/languages"
+import { Predictions } from "@aws-amplify/predictions"
+
 
 
 const DEMO_TEST: React.FC = () => {
 
-    const [languageList, setLanguageList] = useState<[]>([])
+    const [languageList] = useState<any>(languages)
 
     const [checkedLanguages, setCheckedLanguages] = useState<any[]>([])
 
-    const [steps, setSteps] = useState<number>(2)
+    const [steps, setSteps] = useState<number>(1)
 
     const [editorContent, setEditorContent] = useState<string>("")
 
@@ -43,7 +46,7 @@ const DEMO_TEST: React.FC = () => {
     }
 
 
-
+    console.log(translatedEditorContent)
     const onSuccess = (response: any) => {
         console.log("success", response)
     }
@@ -58,28 +61,16 @@ const DEMO_TEST: React.FC = () => {
     }
 
     const handleTranslate = async (languages: string) => {
-        await fetch(`https://translation.googleapis.com/language/translate/v2?key=${process.env.REACT_APP_GOOGLE_CLOUD_TRANSLATE_KEY}`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                q: editorContent,
-                target: languages
-            })
+        Predictions.convert({
+            translateText: {
+                source: {
+                    text: editorContent
+                },
+                targetLanguage: languages
+            }
         })
-            .then((response) => {
-                if (!response.ok) console.log("ERROR")
-                return response.json()
-            })
-            .then((data) => {
-
-                const { data: { translations } } = data
-                setTranslatedEditorContent(translations[0].translatedText)
-            })
-            .catch((error) => {
-                console.log(error)
-            })
+            .then((response) => setTranslatedEditorContent(response.text))
+            .catch((error) => console.log(error))
     }
 
     const handleNextStep = () => {
@@ -91,25 +82,6 @@ const DEMO_TEST: React.FC = () => {
     }
 
 
-
-    useEffect(() => {
-        fetch(`https://translation.googleapis.com/language/translate/v2/languages?key=${process.env.REACT_APP_GOOGLE_CLOUD_TRANSLATE_KEY}`, {
-            method: "GET",
-
-        })
-            .then((response) => {
-                if (!response.ok) console.log("ERROR")
-                return response.json()
-            })
-            .then((data) => {
-                const { data: { languages } } = data
-                setLanguageList(languages)
-
-            })
-            .catch((error) => {
-                console.log(error)
-            })
-    }, [])
 
     return (
         <div className="lg:flex-row lg:h-screen lg:gap-0 flex flex-col gap-14">
