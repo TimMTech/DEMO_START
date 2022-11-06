@@ -11,7 +11,7 @@ const DEMO_TEST: React.FC = () => {
     const [languageList] = useState<any>(languages)
 
     const [mediaQueries, setMediaQueries] = useState<object>({
-        "width": "400",
+        "width": "500",
         "height": "300"
     })
 
@@ -54,7 +54,7 @@ const DEMO_TEST: React.FC = () => {
 
 
     const handleImageOnSuccess = (response: any) => {
-        console.log("success", response)
+       
         setImageFilePath(response.filePath)
     }
 
@@ -63,7 +63,7 @@ const DEMO_TEST: React.FC = () => {
     }
 
     const handleVideoOnSuccess = (response: any) => {
-        console.log("success", response)
+        
         setVideoFilePath(response.filePath)
     }
 
