@@ -5,7 +5,7 @@ import Horizontal from "./StepOne/Templates/Horizontal"
 import Vertical from "./StepOne/Templates/Vertical"
 import Content from "./StepThree/ContentPreview/Content"
 
-import { MouseEvent, ChangeEvent } from "react"
+import { MouseEvent } from "react"
 
 
 interface RightPanelProps {
@@ -14,17 +14,29 @@ interface RightPanelProps {
     selectedTemplate: any;
     selectedImage: any;
     selectedVideo: any;
+    imageFilePath: string;
+    videoFilePath: string;
     steps: number;
+    mediaQueries: object,
     translatedEditorContent: any;
-    
+    activeLanguage: string;
+
     handleSelectedTemplate: (e: MouseEvent<HTMLDivElement>) => void;
     handleNextStep: () => void;
     handlePreviousStep: () => void;
     handleTranslate: (languages: string) => void;
 
+    handleImageOnSuccess: (response: any) => void;
+    handleImageOnError: (response: any) => void;
+
+    handleVideoOnSuccess: (response: any) => void;
+    handleVideoOnError: (response: any) => void;
+
+    handleMediaQueries: (e: MouseEvent<HTMLButtonElement>) => void;
+
 }
 
-const RightPanel: React.FC<RightPanelProps> = ({ steps, editorContent, selectedTemplate, selectedImage, selectedVideo, checkedLanguages, translatedEditorContent, handleSelectedTemplate,  handleNextStep, handlePreviousStep, handleTranslate }) => {
+const RightPanel: React.FC<RightPanelProps> = ({ steps, mediaQueries, editorContent, selectedTemplate, selectedImage, selectedVideo, imageFilePath, videoFilePath, checkedLanguages, translatedEditorContent, activeLanguage, handleSelectedTemplate, handleNextStep, handlePreviousStep, handleTranslate, handleImageOnSuccess, handleImageOnError, handleVideoOnSuccess, handleVideoOnError, handleMediaQueries }) => {
 
     return (
         <div className="relative w-full flex items-center justify-center p-8 h-full ">
@@ -42,11 +54,11 @@ const RightPanel: React.FC<RightPanelProps> = ({ steps, editorContent, selectedT
                 </div>
             )}
             {steps === 2 && (
-                <Upload selectedImage={selectedImage} selectedVideo={selectedVideo}  />
+                <Upload mediaQueries={mediaQueries} selectedImage={selectedImage} selectedVideo={selectedVideo} imageFilePath={imageFilePath} videoFilePath={videoFilePath} handleImageOnSuccess={handleImageOnSuccess} handleImageOnError={handleImageOnError} handleVideoOnSuccess={handleVideoOnSuccess} handleVideoOnError={handleVideoOnError} handleMediaQueries={handleMediaQueries} />
             )}
             {steps === 3 && (
                 <div className="w-full flex flex-col gap-8">
-                    <Language checkedLanguages={checkedLanguages} handleTranslate={handleTranslate} />
+                    <Language checkedLanguages={checkedLanguages} activeLanguage={activeLanguage} handleTranslate={handleTranslate} />
                     <Content editorContent={editorContent} translatedEditorContent={translatedEditorContent} />
                 </div>
             )}

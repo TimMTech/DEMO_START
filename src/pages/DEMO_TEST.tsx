@@ -10,6 +10,11 @@ const DEMO_TEST: React.FC = () => {
 
     const [languageList] = useState<any>(languages)
 
+    const [mediaQueries, setMediaQueries] = useState<object>({
+        "width": "400",
+        "height": "300"
+    })
+
     const [checkedLanguages, setCheckedLanguages] = useState<any[]>([])
 
     const [steps, setSteps] = useState<number>(1)
@@ -17,6 +22,7 @@ const DEMO_TEST: React.FC = () => {
     const [editorContent, setEditorContent] = useState<string>("")
 
     const [translatedEditorContent, setTranslatedEditorContent] = useState<string>("")
+    const [activeLanguage, setActiveLanguage] = useState<string>("");
 
     const [selectedTemplate, setSelectedTemplate] = useState<object>({
         horizontal: false,
@@ -25,6 +31,16 @@ const DEMO_TEST: React.FC = () => {
 
     const [selectedImage, setSelectedImage] = useState<File | null>(null)
     const [selectedVideo, setSelectedVideo] = useState<File | null>(null)
+
+    const [imageFilePath, setImageFilePath] = useState<string>("")
+    const [videoFilePath, setVideoFilePath] = useState<string>("")
+
+    const handleMediaQueries = (e: MouseEvent<HTMLButtonElement>) => {
+        const { id } = e.currentTarget
+        id === "smallQuery" && setMediaQueries({ "width": "200", "height": "100" })
+        id === "mediumQuery" && setMediaQueries({ "width": "500", "height": "300" })
+        id === "largeQuery" && setMediaQueries({ "width": "800", "height": "500" })
+    }
 
     const handleEditorChange = (content: string) => {
         setEditorContent(content)
@@ -39,21 +55,22 @@ const DEMO_TEST: React.FC = () => {
 
     const handleImageOnSuccess = (response: any) => {
         console.log("success", response)
+        setImageFilePath(response.filePath)
     }
 
     const handleImageOnError = (response: any) => {
         console.log("error", response)
     }
 
-
-    console.log(translatedEditorContent)
-    const onSuccess = (response: any) => {
+    const handleVideoOnSuccess = (response: any) => {
         console.log("success", response)
+        setVideoFilePath(response.filePath)
     }
 
-    const onError = (response: any) => {
-        console.log("Error", response)
+    const handleVideoOnError = (response: any) => {
+        console.log("error", response)
     }
+
 
     const handleCheckBox = (e: ChangeEvent<HTMLInputElement>) => {
         const { value } = e.currentTarget;
@@ -69,7 +86,10 @@ const DEMO_TEST: React.FC = () => {
                 targetLanguage: languages
             }
         })
-            .then((response) => setTranslatedEditorContent(response.text))
+            .then((response) => {
+                setTranslatedEditorContent(response.text)
+                setActiveLanguage(languages)
+            })
             .catch((error) => console.log(error))
     }
 
@@ -98,17 +118,29 @@ const DEMO_TEST: React.FC = () => {
             <div className="lg:border lg:h-full lg:mx-0 border border-white/40 mx-8" />
             <RightPanel
                 steps={steps}
+                mediaQueries={mediaQueries}
                 selectedTemplate={selectedTemplate}
                 editorContent={editorContent}
                 selectedImage={selectedImage}
                 selectedVideo={selectedVideo}
+                imageFilePath={imageFilePath}
+                videoFilePath={videoFilePath}
                 checkedLanguages={checkedLanguages}
                 translatedEditorContent={translatedEditorContent}
+                activeLanguage={activeLanguage}
 
                 handleSelectedTemplate={handleSelectedTemplate}
                 handleNextStep={handleNextStep}
                 handlePreviousStep={handlePreviousStep}
                 handleTranslate={handleTranslate}
+
+                handleImageOnSuccess={handleImageOnSuccess}
+                handleImageOnError={handleImageOnError}
+
+                handleVideoOnSuccess={handleVideoOnSuccess}
+                handleVideoOnError={handleVideoOnError}
+
+                handleMediaQueries={handleMediaQueries}
 
             />
         </div>

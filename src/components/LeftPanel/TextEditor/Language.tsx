@@ -32,7 +32,7 @@ const Language: React.FC<LanguageProps> = ({ languageList, checkedLanguages, han
 
                 </div>
                 {openMenu && (
-                    <div className="absolute left-0 right-0 m-1 max-h-[120px] overflow-y-auto font-bold gap-4 text-white text-3xl flex flex-col px-8 py-4 bg-indigo-400 rounded-md no-select z-[99] ">
+                    <div className="absolute left-0 right-0 m-1 max-h-[250px] overflow-y-auto font-bold gap-4 text-white text-3xl flex flex-col px-8 py-4 bg-indigo-400 rounded-md no-select z-[99] ">
                         {languageList.map((languages: Languages, index: number) => {
                             const { language } = languages;
                             return (

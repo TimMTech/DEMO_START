@@ -8,7 +8,7 @@ interface HorizontalProps {
 
 const Horizontal: React.FC<HorizontalProps> = ({ handleSelectedTemplate, selectedTemplate }) => {
     return (
-        <div id="horizontal" onClick={handleSelectedTemplate} className={`${selectedTemplate.horizontal && "scale-110"} hover:scale-110  text-white text-xl bg-white/20 rounded-md h-[350px] w-[350px] flex flex-col cursor-pointer transition ease-in duration-300`}>
+        <div id="horizontal" onClick={handleSelectedTemplate} className={`${selectedTemplate.horizontal && "scale-110"} hover:scale-110 lg:w-[20vw] lg:h-[20vw]   text-white text-xl bg-white/20 w-[40vw] h-[40vw] rounded-md  flex flex-col cursor-pointer transition ease-in duration-300`}>
             <div className="flex items-center justify-center flex-1 border-b">
                 <h1>TEXT</h1>
             </div>
