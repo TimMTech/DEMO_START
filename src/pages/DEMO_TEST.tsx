@@ -16,7 +16,7 @@ const DEMO_TEST: React.FC = () => {
     })
 
     const [checkedLanguages, setCheckedLanguages] = useState<any[]>([])
-
+    console.log(checkedLanguages)
     const [steps, setSteps] = useState<number>(1)
 
     const [editorContent, setEditorContent] = useState<string>("")
@@ -48,13 +48,12 @@ const DEMO_TEST: React.FC = () => {
 
     const handleSelectedTemplate = (e: MouseEvent<HTMLDivElement>) => {
         const { id } = e.currentTarget
-        if (id === "vertical") setSelectedTemplate({ ...selectedTemplate, vertical: true, horizontal: false })
-        if (id === "horizontal") setSelectedTemplate({ ...selectedTemplate, horizontal: true, vertical: false })
+        id === "vertical" && setSelectedTemplate({ ...selectedTemplate, vertical: true, horizontal: false })
+        id === "horizontal" && setSelectedTemplate({ ...selectedTemplate, horizontal: true, vertical: false })
     }
 
 
     const handleImageOnSuccess = (response: any) => {
-       
         setImageFilePath(response.filePath)
     }
 
@@ -63,7 +62,6 @@ const DEMO_TEST: React.FC = () => {
     }
 
     const handleVideoOnSuccess = (response: any) => {
-        
         setVideoFilePath(response.filePath)
     }
 
@@ -115,7 +113,7 @@ const DEMO_TEST: React.FC = () => {
                 handleCheckBox={handleCheckBox}
             />
 
-            <div className="lg:border lg:h-full lg:mx-0 border border-white/40 mx-8" />
+            <div className={`${steps === 4 && "hidden"} lg:border lg:h-full lg:mx-0 border border-white/40 mx-8`}/>
             <RightPanel
                 steps={steps}
                 mediaQueries={mediaQueries}
@@ -143,6 +141,7 @@ const DEMO_TEST: React.FC = () => {
                 handleMediaQueries={handleMediaQueries}
 
             />
+         
         </div>
     )
 }

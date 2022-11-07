@@ -29,7 +29,7 @@ const Language: React.FC<LanguageProps> = ({ checkedLanguages, activeLanguage, h
                 </div>
                 {openMenu && (
                     <div className="absolute left-0 right-0 m-1 max-h-[250px] overflow-y-auto font-bold text-white text-3xl flex flex-col  bg-indigo-400 rounded-md no-select ">
-                        {checkedLanguages.length === 0 && <div>en <i className="text-sm opacity-20 ">default</i></div>}
+                        {checkedLanguages.length === 0 && <div className="p-4">en <i className="text-sm opacity-20 ">default</i></div>}
                         {checkedLanguages.map((languages: string, index: number) => {
 
                             return (

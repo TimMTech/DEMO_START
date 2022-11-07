@@ -39,8 +39,8 @@ interface RightPanelProps {
 const RightPanel: React.FC<RightPanelProps> = ({ steps, mediaQueries, editorContent, selectedTemplate, selectedImage, selectedVideo, imageFilePath, videoFilePath, checkedLanguages, translatedEditorContent, activeLanguage, handleSelectedTemplate, handleNextStep, handlePreviousStep, handleTranslate, handleImageOnSuccess, handleImageOnError, handleVideoOnSuccess, handleVideoOnError, handleMediaQueries }) => {
 
     return (
-        <div className="relative w-full flex items-center justify-center p-8 h-full ">
-            <div className="lg:top-0 absolute top-[-5%] left-0 right-0 flex justify-between items-center text-white text-2xl p-3">
+        <div className="relative w-full flex items-center justify-center p-8 h-full">
+            <div className={`${steps === 4 && "top-0"} lg:top-0 absolute top-[-5%] left-0 right-0 flex justify-between items-center text-white text-2xl p-3`}>
                 <button onClick={handlePreviousStep} disabled={steps === 1} className={`${steps === 1 && "opacity-20"}`}>Back</button>
                 <button onClick={handleNextStep} disabled={steps === 4} className={`${steps === 4 && "opacity-20"}`}>Next</button>
             </div>
@@ -63,7 +63,7 @@ const RightPanel: React.FC<RightPanelProps> = ({ steps, mediaQueries, editorCont
                 </div>
             )}
             {steps === 4 && (
-                <FinalPreview editorContent={editorContent} translatedEditorContent={translatedEditorContent} selectedTemplate={selectedTemplate} selectedImage={selectedImage} selectedVideo={selectedVideo} />
+                <FinalPreview editorContent={editorContent} translatedEditorContent={translatedEditorContent} selectedTemplate={selectedTemplate} imageFilePath={imageFilePath} mediaQueries={mediaQueries} selectedImage={selectedImage} selectedVideo={selectedVideo} />
             )}
 
         </div>

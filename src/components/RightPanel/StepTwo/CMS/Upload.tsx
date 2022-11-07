@@ -25,15 +25,14 @@ const Upload: React.FC<UploadProps> = ({ mediaQueries, selectedImage, selectedVi
         <div className="w-full text-white max-w-[800px]  font-bold text-3xl flex flex-col items-center justify-center  ">
 
             <IKContext
-                urlEndpoint="https://ik.imagekit.io/rydw9khhk"
-                publicKey="public_Bl2csh0JUzkZxMKVxVrooPN9iOU="
-                authenticationEndpoint="http://localhost:3001/auth"
+                urlEndpoint={process.env.REACT_APP_IMAGEKIT_URLENDPOINT}
+                publicKey={process.env.REACT_APP_IMAGEKIT_PUBLICKEY}
+                authenticationEndpoint={process.env.REACT_APP_IMAGEKIT_AUTHENTICATION_ENDPOINT}
 
             >
                 <div className="flex flex-col items-center gap-10">
                     <IKImage path={imageFilePath} transformation={[{ ...mediaQueries }]}
                     />
-
                     <IKUpload
                         id="file-upload"
                         hidden
@@ -41,7 +40,7 @@ const Upload: React.FC<UploadProps> = ({ mediaQueries, selectedImage, selectedVi
                         onSuccess={handleImageOnSuccess}
                         onError={handleImageOnError}
                     />
-                    <label htmlFor="file-upload" className="p-6 bg-indigo-400 rounded-md shadow-md cursor-pointer">Upload Image</label>
+                    <label htmlFor="file-upload" className="p-6 bg-indigo-400 rounded-md shadow-md cursor-pointer">{imageFilePath ? "Change Image" : "Upload Image"}</label>
                     {imageFilePath && (
                         <div className="flex flex-col items-start gap-2">
                             <button id="smallQuery" onClick={handleMediaQueries} className="bg-indigo-600 px-6 py-2 w-full rounded-md ">Small</button>

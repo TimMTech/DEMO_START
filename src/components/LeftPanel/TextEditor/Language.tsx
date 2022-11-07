@@ -37,7 +37,7 @@ const Language: React.FC<LanguageProps> = ({ languageList, checkedLanguages, han
                             const { language } = languages;
                             return (
                                 <div key={index}>
-                                    <input type="checkbox" id={language} value={language} onChange={handleCheckBox} />
+                                    <input type="checkbox" checked={checkedLanguages[index] || ""} id={language} value={language} onChange={handleCheckBox} />
                                     <label htmlFor={language} className="px-2">{language}</label>
                                 </div>
                             )
