@@ -1,4 +1,4 @@
-import { ChangeEvent, MouseEvent, useState } from "react"
+import { MouseEvent, useState } from "react"
 import LeftPanel from "../components/LeftPanel/LeftPanel"
 import RightPanel from "../components/RightPanel/RightPanel"
 import { languages } from "../utils/languages/languages"
@@ -15,8 +15,8 @@ const DEMO_TEST: React.FC = () => {
         "height": "300"
     })
 
-    const [checkedLanguages, setCheckedLanguages] = useState<any[]>([])
-    console.log(checkedLanguages)
+    
+
     const [steps, setSteps] = useState<number>(1)
 
     const [editorContent, setEditorContent] = useState<string>("")
@@ -70,10 +70,6 @@ const DEMO_TEST: React.FC = () => {
     }
 
 
-    const handleCheckBox = (e: ChangeEvent<HTMLInputElement>) => {
-        const { value } = e.currentTarget;
-        setCheckedLanguages((prevState) => checkedLanguages.includes(value) ? prevState.filter((languages) => languages !== value) : [...prevState, value])
-    }
 
     const handleTranslate = async (languages: string) => {
         Predictions.convert({
@@ -106,16 +102,15 @@ const DEMO_TEST: React.FC = () => {
             <LeftPanel
                 steps={steps}
                 editorContent={editorContent}
-                languageList={languageList}
-                checkedLanguages={checkedLanguages}
-
+                
                 handleEditorChange={handleEditorChange}
-                handleCheckBox={handleCheckBox}
+              
             />
 
-            <div className={`${steps === 4 && "hidden"} lg:border lg:h-full lg:mx-0 border border-white/40 mx-8`}/>
+            <div className={`${steps === 4 && "hidden"} lg:border lg:h-full lg:mx-0 border border-white/40 mx-8`} />
             <RightPanel
                 steps={steps}
+                languageList={languageList}
                 mediaQueries={mediaQueries}
                 selectedTemplate={selectedTemplate}
                 editorContent={editorContent}
@@ -123,7 +118,7 @@ const DEMO_TEST: React.FC = () => {
                 selectedVideo={selectedVideo}
                 imageFilePath={imageFilePath}
                 videoFilePath={videoFilePath}
-                checkedLanguages={checkedLanguages}
+              
                 translatedEditorContent={translatedEditorContent}
                 activeLanguage={activeLanguage}
 
@@ -141,7 +136,7 @@ const DEMO_TEST: React.FC = () => {
                 handleMediaQueries={handleMediaQueries}
 
             />
-         
+
         </div>
     )
 }

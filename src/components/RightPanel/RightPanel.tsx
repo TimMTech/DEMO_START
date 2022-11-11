@@ -10,7 +10,6 @@ import { MouseEvent } from "react"
 
 interface RightPanelProps {
     editorContent: any;
-    checkedLanguages: any;
     selectedTemplate: any;
     selectedImage: any;
     selectedVideo: any;
@@ -20,6 +19,7 @@ interface RightPanelProps {
     mediaQueries: object,
     translatedEditorContent: any;
     activeLanguage: string;
+    languageList: any
 
     handleSelectedTemplate: (e: MouseEvent<HTMLDivElement>) => void;
     handleNextStep: () => void;
@@ -36,7 +36,7 @@ interface RightPanelProps {
 
 }
 
-const RightPanel: React.FC<RightPanelProps> = ({ steps, mediaQueries, editorContent, selectedTemplate, selectedImage, selectedVideo, imageFilePath, videoFilePath, checkedLanguages, translatedEditorContent, activeLanguage, handleSelectedTemplate, handleNextStep, handlePreviousStep, handleTranslate, handleImageOnSuccess, handleImageOnError, handleVideoOnSuccess, handleVideoOnError, handleMediaQueries }) => {
+const RightPanel: React.FC<RightPanelProps> = ({ steps,languageList, mediaQueries, editorContent, selectedTemplate, selectedImage, selectedVideo, imageFilePath, videoFilePath, translatedEditorContent, activeLanguage, handleSelectedTemplate, handleNextStep, handlePreviousStep, handleTranslate, handleImageOnSuccess, handleImageOnError, handleVideoOnSuccess, handleVideoOnError, handleMediaQueries }) => {
 
     return (
         <div className="relative w-full flex items-center justify-center p-8 h-full">
@@ -58,7 +58,7 @@ const RightPanel: React.FC<RightPanelProps> = ({ steps, mediaQueries, editorCont
             )}
             {steps === 3 && (
                 <div className="w-full flex flex-col gap-8">
-                    <Language checkedLanguages={checkedLanguages} activeLanguage={activeLanguage} handleTranslate={handleTranslate} />
+                    <Language  languageList={languageList} activeLanguage={activeLanguage} handleTranslate={handleTranslate} />
                     <Content editorContent={editorContent} translatedEditorContent={translatedEditorContent} />
                 </div>
             )}

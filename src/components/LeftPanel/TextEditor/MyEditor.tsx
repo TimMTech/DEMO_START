@@ -22,8 +22,8 @@ const MyEditor: React.FC<EditorProps> = ({ editorContent, handleEditorChange }) 
                 menubar: false,
                 plugins: "autoresize link lists emoticons preview",
                 paste_as_text: true,
-                min_height: 400,
-                max_height: 400,
+                min_height: 700,
+                max_height: 700,
                 toolbar_location: "top",
                 toolbar:
                     "bold italic strikethrough link numlist bullist blockquote emoticons preview outdent indent",
