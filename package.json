@@ -53,6 +53,7 @@
     "imagekitio-react": "^2.0.0",
     "postcss": "^8.4.18",
     "react-icons": "^4.6.0",
+    "react-multi-select-component": "^4.3.4",
     "react-router-dom": "^6.4.2",
     "tailwindcss": "^3.2.0"
   }

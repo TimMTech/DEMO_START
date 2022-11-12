@@ -1,7 +1,5 @@
 const IKMedia: React.FC = () => {
-    return (
-        <div></div>
-    )
-}
+  return <div></div>;
+};
 
-export default IKMedia
+export default IKMedia;
