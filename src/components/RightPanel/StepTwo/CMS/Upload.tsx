@@ -31,7 +31,7 @@ const Upload: React.FC<UploadProps> = ({
   handleMediaQueries,
 }) => {
   return (
-    <div className="w-full text-white max-w-[800px]  font-bold text-3xl flex flex-col items-center justify-center  ">
+    <div className="w-full text-white max-w-[800px]  font-bold text-3xl flex flex-col items-center justify-center mt-10">
       <IKContext
         urlEndpoint={process.env.REACT_APP_IMAGEKIT_URLENDPOINT}
         publicKey={process.env.REACT_APP_IMAGEKIT_PUBLICKEY}

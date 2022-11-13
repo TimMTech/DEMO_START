@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { AiOutlineDown, AiOutlineUp } from "react-icons/ai";
+import { MultiSelect } from "react-multi-select-component";
+import { languages } from "../../../../utils/languages/languages";
 
 interface LanguageProps {
   activeLanguage: string;
@@ -23,22 +25,46 @@ const Language: React.FC<LanguageProps> = ({
       <div className="w-full relative">
         <div
           onClick={handleDropDown}
-          className="text-white text-3xl flex justify-between items-center bg-purple-600/20 px-8 py-4 rounded-md cursor-pointer"
+          className="multi-select-container-copy-style"
         >
-          <h1 className="font-bold no-select ">Select A Language</h1>
-          {openMenu ? <AiOutlineUp size={40} /> : <AiOutlineDown size={40} />}
+          <div className="multi-select-heading-copy-style no-select">
+            <div className="multi-select-heading-value-copy-style">
+              <h1 className="multi-select-gray-copy-style no-select">
+                Your Chosen Languages...
+              </h1>
+            </div>
+            {openMenu ? (
+              <AiOutlineUp
+                className="multi-select-arrow-copy-style"
+                size={17}
+              />
+            ) : (
+              <AiOutlineDown
+                className="multi-select-arrow-copy-style"
+                size={17}
+              />
+            )}
+          </div>
         </div>
         {openMenu && (
-          <div className="absolute left-0 right-0 m-1 max-h-[250px] overflow-y-auto font-bold text-white text-3xl flex flex-col  bg-indigo-400 rounded-md no-select ">
+          <div className="multi-select-content-copy-style no-select max-h-[300px] overflow-y-auto">
+            {selectedLanguages.length === 0 && (
+              <div className="p-4 cursor-pointer">
+                en <i className="text-sm text-black/20">default</i>
+              </div>
+            )}
             {selectedLanguages.map((languages: any, index: number) => {
               const { label } = languages;
               return (
                 <div
                   key={index}
                   className={`${
-                    activeLanguage === label && "bg-white/20 rounded-md"
+                    activeLanguage === label && "bg-black/20"
                   } p-4 cursor-pointer`}
-                  onClick={() => handleTranslate(label)}
+                  onClick={() => {
+                    handleTranslate(label);
+                    handleDropDown();
+                  }}
                 >
                   {label}
                 </div>

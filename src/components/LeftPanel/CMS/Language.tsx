@@ -12,15 +12,13 @@ const Language: React.FC<LanguageProps> = ({
   handleMultiSelect,
 }) => {
   return (
-    <div>
-      <MultiSelect
-        options={languageList}
-        className="relative z-[99]"
-        value={selectedLanguages}
-        onChange={handleMultiSelect}
-        labelledBy={""}
-      />
-    </div>
+    <MultiSelect
+      options={languageList}
+      className="relative z-[99]"
+      value={selectedLanguages}
+      onChange={handleMultiSelect}
+      labelledBy={"Select"}
+    />
   );
 };
 

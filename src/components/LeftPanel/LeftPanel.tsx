@@ -22,7 +22,7 @@ const LeftPanel: React.FC<LeftPanelProps> = ({
     <div
       className={`${
         steps === 4 && "hidden"
-      } w-full p-8 flex items-center justify-center`}
+      } w-full p-8 flex items-center justify-center `}
     >
       <div className="w-full flex flex-col gap-8 no-select ">
         <Language

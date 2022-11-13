@@ -61,7 +61,7 @@ const RightPanel: React.FC<RightPanelProps> = ({
       <div
         className={`${
           steps === 4 && "top-0"
-        } lg:top-0 absolute top-[-5%] left-0 right-0 flex justify-between items-center text-white text-2xl p-3`}
+        } lg:top-0 absolute top-0 left-0 right-0 flex justify-between items-center text-white text-2xl p-3`}
       >
         <button
           onClick={handlePreviousStep}
@@ -79,7 +79,7 @@ const RightPanel: React.FC<RightPanelProps> = ({
         </button>
       </div>
       {steps === 1 && (
-        <div className="w-full flex flex-col gap-8">
+        <div className="w-full flex flex-col gap-8 mt-10">
           <h1 className="text-white font-bold text-center text-4xl font-bold w-full">
             Choose A Template
           </h1>
@@ -110,7 +110,7 @@ const RightPanel: React.FC<RightPanelProps> = ({
         />
       )}
       {steps === 3 && (
-        <div className="w-full flex flex-col gap-8">
+        <div className="w-full flex flex-col gap-8 mt-10">
           <Language
             selectedLanguages={selectedLanguages}
             activeLanguage={activeLanguage}
