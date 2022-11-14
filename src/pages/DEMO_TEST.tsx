@@ -1,4 +1,4 @@
-import { MouseEvent, useState } from "react";
+import { ChangeEvent, MouseEvent, useState } from "react";
 import LeftPanel from "../components/LeftPanel/LeftPanel";
 import RightPanel from "../components/RightPanel/RightPanel";
 import { languages } from "../utils/languages/languages";
@@ -12,13 +12,16 @@ const DEMO_TEST: React.FC = () => {
     height: "300",
   });
 
+
+
   const [selectedLanguages, setSelectedLanguages] = useState<any[]>([]);
 
   const [steps, setSteps] = useState<number>(1);
 
   const [editorContent, setEditorContent] = useState<string>("");
 
-  const [translatedEditorContent, setTranslatedEditorContent] = useState<string>("");
+  const [translatedEditorContent, setTranslatedEditorContent] =
+    useState<string>("");
   const [activeLanguage, setActiveLanguage] = useState<string>("");
 
   const [selectedTemplate, setSelectedTemplate] = useState<object>({
@@ -39,10 +42,12 @@ const DEMO_TEST: React.FC = () => {
     id === "largeQuery" && setMediaQueries({ width: "800", height: "500" });
   };
 
+ 
+
   const handleEditorChange = (content: string) => {
     setEditorContent(content);
   };
-
+  
   const handleSelectedTemplate = (e: MouseEvent<HTMLDivElement>) => {
     const { id } = e.currentTarget;
     id === "vertical" &&
@@ -123,6 +128,7 @@ const DEMO_TEST: React.FC = () => {
         steps={steps}
         selectedLanguages={selectedLanguages}
         mediaQueries={mediaQueries}
+      
         selectedTemplate={selectedTemplate}
         editorContent={editorContent}
         selectedImage={selectedImage}
@@ -131,6 +137,7 @@ const DEMO_TEST: React.FC = () => {
         videoFilePath={videoFilePath}
         translatedEditorContent={translatedEditorContent}
         activeLanguage={activeLanguage}
+        
         handleSelectedTemplate={handleSelectedTemplate}
         handleNextStep={handleNextStep}
         handlePreviousStep={handlePreviousStep}

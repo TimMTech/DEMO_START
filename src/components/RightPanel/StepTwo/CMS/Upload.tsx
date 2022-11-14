@@ -1,6 +1,6 @@
 import { MouseEvent } from "react";
 
-import { IKContext, IKImage, IKVideo, IKUpload } from "imagekitio-react";
+import { IKContext, IKImage, IKUpload } from "imagekitio-react";
 
 interface UploadProps {
   mediaQueries: object;
@@ -8,6 +8,7 @@ interface UploadProps {
   selectedVideo: any;
   imageFilePath: string;
   videoFilePath: string;
+ 
 
   handleImageOnSuccess: (response: any) => void;
   handleImageOnError: (response: any) => void;
@@ -16,10 +17,12 @@ interface UploadProps {
   handleVideoOnError: (response: any) => void;
 
   handleMediaQueries: (e: MouseEvent<HTMLButtonElement>) => void;
+
 }
 
 const Upload: React.FC<UploadProps> = ({
   mediaQueries,
+ 
   selectedImage,
   selectedVideo,
   imageFilePath,
@@ -29,6 +32,7 @@ const Upload: React.FC<UploadProps> = ({
   handleVideoOnSuccess,
   handleVideoOnError,
   handleMediaQueries,
+  
 }) => {
   return (
     <div className="w-full text-white max-w-[800px]  font-bold text-3xl flex flex-col items-center justify-center mt-10">
@@ -62,7 +66,8 @@ const Upload: React.FC<UploadProps> = ({
               <button
                 id="smallQuery"
                 onClick={handleMediaQueries}
-                className="bg-indigo-600 px-6 py-2 w-full rounded-md "
+                className="bg-indigo-600 px-6 py-2 w-full rounded-md"
+              
               >
                 Small
               </button>

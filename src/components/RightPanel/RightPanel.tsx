@@ -5,7 +5,7 @@ import Horizontal from "./StepOne/Templates/Horizontal";
 import Vertical from "./StepOne/Templates/Vertical";
 import Content from "./StepThree/ContentPreview/Content";
 
-import { MouseEvent } from "react";
+import { ChangeEvent, MouseEvent } from "react";
 
 interface RightPanelProps {
   editorContent: any;
@@ -16,6 +16,7 @@ interface RightPanelProps {
   videoFilePath: string;
   steps: number;
   mediaQueries: object;
+  
   translatedEditorContent: any;
   activeLanguage: string;
   selectedLanguages: any;
@@ -32,12 +33,14 @@ interface RightPanelProps {
   handleVideoOnError: (response: any) => void;
 
   handleMediaQueries: (e: MouseEvent<HTMLButtonElement>) => void;
+ 
 }
 
 const RightPanel: React.FC<RightPanelProps> = ({
   steps,
   selectedLanguages,
   mediaQueries,
+
   editorContent,
   selectedTemplate,
   selectedImage,
@@ -55,6 +58,7 @@ const RightPanel: React.FC<RightPanelProps> = ({
   handleVideoOnSuccess,
   handleVideoOnError,
   handleMediaQueries,
+ 
 }) => {
   return (
     <div className="relative w-full flex items-center justify-center p-8 h-full">
@@ -97,6 +101,7 @@ const RightPanel: React.FC<RightPanelProps> = ({
       )}
       {steps === 2 && (
         <Upload
+         
           mediaQueries={mediaQueries}
           selectedImage={selectedImage}
           selectedVideo={selectedVideo}
@@ -107,6 +112,7 @@ const RightPanel: React.FC<RightPanelProps> = ({
           handleVideoOnSuccess={handleVideoOnSuccess}
           handleVideoOnError={handleVideoOnError}
           handleMediaQueries={handleMediaQueries}
+         
         />
       )}
       {steps === 3 && (

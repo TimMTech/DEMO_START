@@ -41,6 +41,12 @@ img {
   margin: auto;
 }
 
+/*Remove Focus Border From react-multi-select-component*/
+.dropdown-container:focus-within {
+  border-color: white !important;
+  box-shadow: none !important;
+}
+
 @layer utilities {
   .no-select {
     -webkit-touch-callout: none;
@@ -57,8 +63,6 @@ img {
     /* Non-prefixed version, currently
                                       supported by Chrome, Edge, Opera and Firefox */
   }
-
-  
 
   /*Copied multi-select-react-component styling to match original*/
   .multi-select-container-copy-style {
@@ -104,7 +108,5 @@ img {
     background-color: white;
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 4px 11px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
-    
   }
-  
 }

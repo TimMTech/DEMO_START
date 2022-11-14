@@ -14,6 +14,7 @@ const Language: React.FC<LanguageProps> = ({
   activeLanguage,
   handleTranslate,
 }) => {
+  
   const [openMenu, setOpenMenu] = useState<boolean>(false);
 
   const handleDropDown = () => {
